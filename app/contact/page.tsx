@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
-import Link from "next/link"
-import { useState } from "react"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
-import { InteractiveHeading } from "@/components/interactive-heading"
-import { AnimatedText } from "@/components/animated-text"
-import { FloatingParticles } from "@/components/floating-particles"
+import type React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import { InteractiveHeading } from "@/components/interactive-heading";
+import { AnimatedText } from "@/components/animated-text";
+import { FloatingParticles } from "@/components/floating-particles";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: "easeOut" },
-}
+};
 
 const staggerContainer = {
   animate: {
@@ -23,7 +23,7 @@ const staggerContainer = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -31,35 +31,59 @@ export default function ContactPage() {
     email: "",
     company: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatusMessage("");
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: `${formData.email} ${formData.company}`, // Optional: include company in same field
+          message: formData.message,
+        }),
+      });
 
-    console.log("Form submitted:", formData)
-    setIsSubmitting(false)
+      const result = await res.json();
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      message: "",
-    })
-  }
+      if (res.ok) {
+        setStatusMessage("Your message has been sent successfully!");
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          message: "",
+        });
+      } else {
+        setStatusMessage(
+          "Failed to send your message. Please try again later."
+        );
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatusMessage("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
@@ -89,7 +113,11 @@ export default function ContactPage() {
             </motion.p>
 
             <div className="space-y-2 md:space-y-4">
-              <InteractiveHeading size="xlarge" delay={0.5} onClick={() => console.log("Contact clicked!")}>
+              <InteractiveHeading
+                size="xlarge"
+                delay={0.5}
+                onClick={() => console.log("Contact clicked!")}
+              >
                 Contact
               </InteractiveHeading>
               <InteractiveHeading
@@ -143,9 +171,10 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                Whether you're looking to automate your first process or scale your existing RPA implementation, our
-                team of experts is here to help. We offer comprehensive consultation and can guide you through every
-                step of your automation journey.
+                Whether you're looking to automate your first process or scale
+                your existing RPA implementation, our team of experts is here to
+                help. We offer comprehensive consultation and can guide you
+                through every step of your automation journey.
               </motion.p>
             </div>
 
@@ -160,7 +189,8 @@ export default function ContactPage() {
                   icon: Mail,
                   title: "Email Us",
                   content: "hello@saema.dev",
-                  description: "Send us an email and we'll respond within 24 hours",
+                  description:
+                    "Send us an email and we'll respond within 24 hours",
                   gradient: "from-pink-500 to-purple-600",
                 },
                 {
@@ -230,7 +260,9 @@ export default function ContactPage() {
                       >
                         {item.content}
                       </p>
-                      <p className="text-gray-400 text-xs md:text-sm">{item.description}</p>
+                      <p className="text-gray-400 text-xs md:text-sm">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
 
@@ -306,7 +338,10 @@ export default function ContactPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.8 }}
                     >
-                      <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium mb-2 text-gray-300"
+                      >
                         Name *
                       </label>
                       <motion.input
@@ -327,7 +362,10 @@ export default function ContactPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9 }}
                     >
-                      <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium mb-2 text-gray-300"
+                      >
                         Email *
                       </label>
                       <motion.input
@@ -349,7 +387,10 @@ export default function ContactPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.0 }}
                   >
-                    <label htmlFor="company" className="block text-sm font-medium mb-2 text-gray-300">
+                    <label
+                      htmlFor="company"
+                      className="block text-sm font-medium mb-2 text-gray-300"
+                    >
                       Company
                     </label>
                     <motion.input
@@ -369,7 +410,10 @@ export default function ContactPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.1 }}
                   >
-                    <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium mb-2 text-gray-300"
+                    >
                       Message *
                     </label>
                     <motion.textarea
@@ -384,7 +428,11 @@ export default function ContactPage() {
                       whileFocus={{ scale: 1.02 }}
                     />
                   </motion.div>
-
+                  {statusMessage && (
+                    <p className="text-sm mt-2 text-center text-gray-300">
+                      {statusMessage}
+                    </p>
+                  )}
                   <motion.button
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -392,7 +440,8 @@ export default function ContactPage() {
                     whileHover={{
                       scale: 1.02,
                       boxShadow: "0 20px 40px rgba(95, 57, 187, 0.4)",
-                      background: "linear-gradient(45deg, #5F39BB, #8B5CF6, #A855F7)",
+                      background:
+                        "linear-gradient(45deg, #5F39BB, #8B5CF6, #A855F7)",
                     }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
@@ -410,7 +459,11 @@ export default function ContactPage() {
                         >
                           <motion.div
                             animate={{ rotate: 360 }}
-                            transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                            transition={{
+                              duration: 1,
+                              repeat: Number.POSITIVE_INFINITY,
+                              ease: "linear",
+                            }}
                             className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                           />
                           <span>Sending...</span>
@@ -460,9 +513,10 @@ export default function ContactPage() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            Join the growing number of companies that have transformed their operations with SAEMA's intelligent
-            automation solutions. Let's discuss your specific needs and create a customized roadmap for your digital
-            transformation journey.
+            Join the growing number of companies that have transformed their
+            operations with SAEMA's intelligent automation solutions. Let's
+            discuss your specific needs and create a customized roadmap for your
+            digital transformation journey.
           </motion.p>
 
           <Link href="/">
@@ -492,5 +546,5 @@ export default function ContactPage() {
       {/* Footer */}
       <Footer />
     </div>
-  )
+  );
 }
