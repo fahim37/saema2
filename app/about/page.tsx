@@ -274,7 +274,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-12 md:py-20 px-4 md:px-6">
+{/*       <section className="py-12 md:py-20 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -326,7 +326,7 @@ export default function AboutPage() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Mission Section */}
       <section className="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-b from-gray-900/30 to-black">
