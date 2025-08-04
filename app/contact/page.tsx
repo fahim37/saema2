@@ -163,7 +163,7 @@ export default function ContactPage() {
                 className="mb-6 md:mb-8"
                 onClick={() => console.log("Let's Start clicked!")}
               >
-                Let's Start a Conversation
+                Lassen Sie uns ins Gespräch kommen
               </InteractiveHeading>
               <motion.p
                 className="text-base md:text-lg text-gray-300 leading-relaxed"
@@ -171,10 +171,11 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                Whether you're looking to automate your first process or scale
-                your existing RPA implementation, our team of experts is here to
-                help. We offer comprehensive consultation and can guide you
-                through every step of your automation journey.
+                Ganz gleich, ob Sie Ihren ersten Prozess automatisieren oder
+                Ihre bestehende RPA-Implementierung skalieren möchten – unser
+                Expertenteam steht Ihnen zur Seite. Wir bieten umfassende
+                Beratung und begleiten Sie auf jedem Schritt Ihrer
+                Automatisierungsreise.
               </motion.p>
             </div>
 
@@ -328,7 +329,7 @@ export default function ContactPage() {
                   className="mb-6 md:mb-8"
                   onClick={() => console.log("Send us a Message clicked!")}
                 >
-                  Send us a Message
+                  Senden Sie uns eine Nachricht
                 </InteractiveHeading>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -503,7 +504,7 @@ export default function ContactPage() {
             className="mb-6 md:mb-8"
             onClick={() => console.log("Ready to Get Started clicked!")}
           >
-            Ready to Get Started?
+            Bereit, loszulegen?
           </InteractiveHeading>
 
           <motion.p
@@ -513,10 +514,11 @@ export default function ContactPage() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            Join the growing number of companies that have transformed their
-            operations with SAEMA's intelligent automation solutions. Let's
-            discuss your specific needs and create a customized roadmap for your
-            digital transformation journey.
+            Schließen Sie sich der wachsenden Zahl von Unternehmen an, die ihre
+            Abläufe mit den intelligenten Automatisierungslösungen von SAEMA
+            transformiert haben. Lassen Sie uns über Ihre spezifischen
+            Anforderungen sprechen und einen maßgeschneiderten Fahrplan für Ihre
+            digitale Transformation erstellen.
           </motion.p>
 
           <Link href="/">
@@ -536,7 +538,7 @@ export default function ContactPage() {
                 transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
                 className="relative z-10"
               >
-                Explore Our Services
+                Entdecken Sie unsere Dienstleistungen
               </motion.span>
             </motion.button>
           </Link>

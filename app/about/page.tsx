@@ -1,17 +1,25 @@
-"use client"
-import { motion } from "framer-motion"
-import { Users, Award, Lightbulb, Heart, Zap, Globe, TrendingUp } from "lucide-react"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
-import { InteractiveHeading } from "@/components/interactive-heading"
-import { AnimatedText } from "@/components/animated-text"
-import { FloatingParticles } from "@/components/floating-particles"
+"use client";
+import { motion } from "framer-motion";
+import {
+  Users,
+  Award,
+  Lightbulb,
+  Heart,
+  Zap,
+  Globe,
+  TrendingUp,
+} from "lucide-react";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import { InteractiveHeading } from "@/components/interactive-heading";
+import { AnimatedText } from "@/components/animated-text";
+import { FloatingParticles } from "@/components/floating-particles";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: "easeOut" },
-}
+};
 
 const staggerContainer = {
   animate: {
@@ -19,7 +27,7 @@ const staggerContainer = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 export default function AboutPage() {
   const values = [
@@ -33,22 +41,25 @@ export default function AboutPage() {
     {
       icon: Heart,
       title: "Leidenschaft",
-      description: "Unsere Leidenschaft für Automatisierung treibt uns an, außergewöhnliche Ergebnisse zu erzielen.",
+      description:
+        "Unsere Leidenschaft für Automatisierung treibt uns an, außergewöhnliche Ergebnisse zu erzielen.",
       gradient: "from-pink-500 to-red-500",
     },
     {
       icon: Users,
       title: "Partnerschaft",
-      description: "Wir arbeiten eng mit unseren Kunden zusammen und verstehen uns als langfristige Partner.",
+      description:
+        "Wir arbeiten eng mit unseren Kunden zusammen und verstehen uns als langfristige Partner.",
       gradient: "from-blue-500 to-purple-500",
     },
     {
       icon: Award,
       title: "Qualität",
-      description: "Höchste Qualitätsstandards in allen Projekten - von der Konzeption bis zur Umsetzung.",
+      description:
+        "Höchste Qualitätsstandards in allen Projekten - von der Konzeption bis zur Umsetzung.",
       gradient: "from-green-500 to-teal-500",
     },
-  ]
+  ];
 
   const stats = [
     {
@@ -71,28 +82,31 @@ export default function AboutPage() {
       label: "Jahre Erfahrung",
       icon: Award,
     },
-  ]
+  ];
 
   const team = [
     {
       name: "Max Mustermann",
       role: "CEO & Founder",
-      description: "Experte für RPA und digitale Transformation mit über 10 Jahren Erfahrung.",
+      description:
+        "Experte für RPA und digitale Transformation mit über 10 Jahren Erfahrung.",
       gradient: "from-purple-500 to-pink-500",
     },
     {
       name: "Anna Schmidt",
       role: "CTO",
-      description: "Spezialistin für KI und Machine Learning mit Fokus auf innovative Lösungen.",
+      description:
+        "Spezialistin für KI und Machine Learning mit Fokus auf innovative Lösungen.",
       gradient: "from-blue-500 to-cyan-500",
     },
     {
       name: "Thomas Weber",
       role: "Lead Developer",
-      description: "Entwicklungsleiter mit Expertise in Cloud-Technologien und Systemintegration.",
+      description:
+        "Entwicklungsleiter mit Expertise in Cloud-Technologien und Systemintegration.",
       gradient: "from-green-500 to-teal-500",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
@@ -159,24 +173,31 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <InteractiveHeading size="large">Unsere Geschichte</InteractiveHeading>
+            <InteractiveHeading size="large">
+              Unsere Geschichte
+            </InteractiveHeading>
 
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
-                SAEMA wurde mit der Vision gegründet, Unternehmen dabei zu helfen, das volle Potenzial der digitalen
-                Transformation zu erschließen. Als Experten für Robotic Process Automation (RPA) und Künstliche
-                Intelligenz haben wir bereits über 50 erfolgreiche Projekte realisiert.
+                SAEMA wurde mit der Vision gegründet, Unternehmen dabei zu
+                helfen, das volle Potenzial der digitalen Transformation zu
+                erschließen. Als Experten für Robotic Process Automation (RPA)
+                und Künstliche Intelligenz haben wir bereits über 50
+                erfolgreiche Projekte realisiert.
               </p>
 
               <p>
-                Unser interdisziplinäres Team aus Beratern, Entwicklern und Ingenieuren arbeitet täglich daran,
-                innovative Lösungen zu entwickeln, die nicht nur Prozesse automatisieren, sondern echten Mehrwert für
-                unsere Kunden schaffen.
+                Unser interdisziplinäres Team aus Beratern, Entwicklern und
+                Ingenieuren arbeitet täglich daran, innovative Lösungen zu
+                entwickeln, die nicht nur Prozesse automatisieren, sondern
+                echten Mehrwert für unsere Kunden schaffen.
               </p>
 
               <p>
-                Von der ersten Beratung bis zur langfristigen Betreuung stehen wir unseren Kunden als verlässlicher
-                Partner zur Seite und sorgen dafür, dass ihre Automatisierungsprojekte zum Erfolg werden.
+                Von der ersten Beratung bis zur langfristigen Betreuung stehen
+                wir unseren Kunden als verlässlicher Partner zur Seite und
+                sorgen dafür, dass ihre Automatisierungsprojekte zum Erfolg
+                werden.
               </p>
             </div>
           </motion.div>
@@ -233,7 +254,9 @@ export default function AboutPage() {
             <p className="text-transparent bg-clip-text bg-gradient-to-r from-[#5F39BB] to-[#8B5CF6] text-xs md:text-sm font-semibold tracking-wider uppercase mb-4">
               <AnimatedText text="OUR VALUES" />
             </p>
-            <InteractiveHeading size="large">Was uns antreibt</InteractiveHeading>
+            <InteractiveHeading size="large">
+              Was uns antreibt
+            </InteractiveHeading>
           </motion.div>
 
           <motion.div
@@ -266,7 +289,9 @@ export default function AboutPage() {
                   {value.title}
                 </InteractiveHeading>
 
-                <p className="text-gray-300 leading-relaxed text-sm">{value.description}</p>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  {value.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -274,7 +299,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-12 md:py-20 px-4 md:px-6">
+      {/* <section className="py-12 md:py-20 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -326,7 +351,7 @@ export default function AboutPage() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Mission Section */}
       <section className="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-b from-gray-900/30 to-black">
@@ -347,13 +372,17 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            Wir glauben daran, dass intelligente Automatisierung nicht nur Prozesse effizienter macht, sondern Menschen
-            dabei hilft, sich auf das zu konzentrieren, was wirklich wichtig ist. Unser Ziel ist es, Unternehmen dabei
-            zu unterstützen, ihre digitale Transformation erfolgreich zu gestalten und nachhaltigen Mehrwert zu
-            schaffen.
+            Wir glauben daran, dass intelligente Automatisierung nicht nur
+            Prozesse effizienter macht, sondern Menschen dabei hilft, sich auf
+            das zu konzentrieren, was wirklich wichtig ist. Unser Ziel ist es,
+            Unternehmen dabei zu unterstützen, ihre digitale Transformation
+            erfolgreich zu gestalten und nachhaltigen Mehrwert zu schaffen.
           </motion.p>
 
-          <motion.div className="flex justify-center" whileHover={{ scale: 1.05 }}>
+          <motion.div
+            className="flex justify-center"
+            whileHover={{ scale: 1.05 }}
+          >
             <div className="w-16 h-16 bg-gradient-to-r from-[#5F39BB] to-[#8B5CF6] rounded-full flex items-center justify-center">
               <Globe className="w-8 h-8 text-white" />
             </div>
@@ -363,5 +392,5 @@ export default function AboutPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
