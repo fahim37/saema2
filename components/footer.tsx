@@ -1,37 +1,55 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
-import { Instagram, Twitter } from "lucide-react"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   const socialLinks = [
     {
       name: "X (Twitter)",
       href: "https://x.com/SAEMAdev",
-      icon: Twitter,
-      gradient: "from-blue-400 to-blue-600",
+      icon: "/icons/x.png",
+      gradient: "from-blue-400 to-blue-600", // Retained original colorful gradient
     },
     {
       name: "Instagram",
       href: "https://www.instagram.com/saemaautomation",
-      icon: Instagram,
-      gradient: "from-pink-500 to-purple-600",
+      icon: "/icons/insta.png",
+      gradient: "from-pink-500 to-purple-600", // Retained original colorful gradient
     },
     {
       name: "TikTok",
       href: "https://www.tiktok.com/@SAEMAdev",
-      icon: "🎵",
-      gradient: "from-black to-gray-800",
+      icon: "/icons/tiktok.png",
+      gradient: "from-red-500 to-orange-500", // Changed from black to a vibrant colorful gradient
     },
-  ]
+    {
+      name: "Facebook",
+      href: "#", // Changed to placeholder link
+      icon: "/icons/fb.png",
+      gradient: "from-indigo-500 to-blue-700", // Colorful gradient
+    },
+    {
+      name: "GitHub",
+      href: "#", // Changed to placeholder link
+      icon: "/icons/git.png",
+      gradient: "from-purple-500 to-pink-500", // Colorful gradient
+    },
+    {
+      name: "LinkedIn",
+      href: "#", // Changed to placeholder link
+      icon: "/icons/linkd.png",
+      gradient: "from-emerald-500 to-teal-600", // Colorful gradient
+    },
+  ];
 
   const footerLinks = [
     { name: "Privacy Policy", href: "/datenschutz" },
     { name: "Impressum", href: "/impressum" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
   return (
     <footer className="border-t border-gray-800 py-8 md:py-12 px-4 md:px-6 bg-gradient-to-t from-gray-900/50 to-transparent">
@@ -71,8 +89,9 @@ export default function Footer() {
               />
             </motion.div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Digitale Lösungen, die begeistern – automatisiert, sicher, skalierbar. Wir revolutionieren Ihre
-              Geschäftsprozesse mit intelligenter Automatisierung.
+              Digitale Lösungen, die begeistern – automatisiert, sicher,
+              skalierbar. Wir revolutionieren Ihre Geschäftsprozesse mit
+              intelligenter Automatisierung.
             </p>
           </div>
 
@@ -111,7 +130,16 @@ export default function Footer() {
                   }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  {typeof social.icon === "string" ? (
+                  {typeof social.icon === "string" &&
+                  social.icon.startsWith("/") ? (
+                    <Image
+                      src={social.icon}
+                      alt={social.name}
+                      width={20}
+                      height={20}
+                      className="w-7 h-7 object-contain"
+                    />
+                  ) : typeof social.icon === "string" ? (
                     <span className="text-lg">{social.icon}</span>
                   ) : (
                     <social.icon className="w-5 h-5" />
@@ -139,5 +167,5 @@ export default function Footer() {
         </motion.div>
       </div>
     </footer>
-  )
+  );
 }
